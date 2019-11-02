@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hello 2</title>
+</head>
+<body>
+Hello 2<br><br>
+
+<!-- <form role="search" class="navbar-form" id="search" onsubmit="myFunction()"> -->
+    <div class="form-group">
+        <input type="text" value="Matrix" placeholder="Search for Movie Title" class="form-control" name="search">
+    </div>
+
+    <button class="btn btn-default" type="button" onclick="myFunction()">Search</button>
+<!-- </form> -->
+
+<form method="post" enctype="multipart/form-data">
+  <input type="file" name="files[]" multiple />
+  <input type="submit" value="Upload File" name="submit" />
+</form>
+
+<script>
+const url = 'http://127.0.0.1:5000/upload'
+const form = document.querySelector('form')
+form.addEventListener('submit', e => {
+  e.preventDefault()
+
+  const files = document.querySelector('[type=file]').files
+  const formData = new FormData()
+
+  for (let i = 0; i < files.length; i++) {
+    let file = files[i]
+
+    formData.append('fl', file)
+  }
+
+  fetch(url, {
+    method: 'POST',
+    body: formData,
+  }).then(response => {
+    console.log(response)
+  })
+})
+
+
+function myFunction() {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+             alert(this.responseText);
+         }
+    };
+    xhttp.open("POST", "http://127.0.0.1:5000/get-cookie-test?search=Matrix", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send('{"test": "abc"}');
+}
+
+function sendFile() {
+    var xhttp = new XMLHttpRequest();
+    var formData = new FormData();
+    var x = document.getElementById("myFile");
+    alert (x.files.length)
+    var file = null;
+
+    for (var i = 0; i < x.files.length; i++) {
+        var file = x.files[i];
+        if ('name' in file) {
+            alert ("File selected is: " + file.name)
+        }
+    }
+
+    if (file != null) {
+        alert ("File is not null. Appending to Formdata")
+        formData.append("files[]", file);
+    }
+
+    xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+             alert(this.responseText);
+         }
+    };
+    xhttp.open("POST", "http://127.0.0.1:5000/upload", true);
+    xhttp.setRequestHeader("Content-type", "multipart/form-data");
+    xhttp.send(formData);
+}
+
+</script>
+
+</body>
+</html>

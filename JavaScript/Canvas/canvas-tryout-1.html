@@ -1,0 +1,36 @@
+<!-- Come back here and complete the canvas drag and drop exercise -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Canvas try out</title>
+</head>
+<style type="text/css">
+	canvas {
+		border: 5px solid #d3d3d3;
+		background-color: #f5f5f5;
+	}
+</style>
+<body onload="setup()">
+	<p>Starting canvas</p>
+	<canvas id="canvas1"></canvas>
+	<p>Canvas finished</p>
+
+	<script type="text/javascript">
+		function setup() {
+			setMyCanvas.start();
+		}
+
+		var setMyCanvas = {
+			c1 : document.getElement ("canvas1"),
+			start : function() {
+				this.c1.width = 480;
+				this.c1.height = 300;
+				this.context = this.c.getContext("2d");
+				document.insertBefore (this.c, document.body.chil	dNodes[0]);
+			}
+		}
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!-- Come back here for understanding more about Elements Nodes etc.
+Complete this excercise by adding two buttons. One to add more elements under MyDiv on the click of "Add New Element" button
+
+Second list the name of child nodes in myDiv inside results div, on the click of "Show count" button. -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div {
+  border: 1px solid black;
+  margin: 5px;
+}
+</style>
+</head>
+<body>
+
+<p>Click the button to find out how many child nodes the div element below has.</p>
+
+<button onclick="myFunction1()">Add New element</button>
+  
+<div id="myDIV">
+  <p>Element - 1</p>
+</div>
+
+<p><strong>Note:</strong> Whitespace inside elements is considered as text, and text 
+is considered as nodes. In this example, index 0, 2 and 4 in DIV are text nodes.</p>
+
+<button onclick="showCount()">Show count</button>
+<button onclick="clearResults()">Clear</button>
+<div id="results">
+</div>
+
+<script>
+  function clearResults() {
+    console.log ("hi");
+    document.getElementById("results").style.display = 'none';
+  }
+
+  function showCount() {
+    var c = document.getElementById("myDIV").childNodes;
+
+    var i;
+    for (i = 0; i<c.length; i++) {
+
+      e = c[i];
+      console.log ("element got is: " + e)
+      console.log(e.nodeType);
+      console.log(e.nodeName);
+      console.log(e.tagName);
+      // console.log()
+      // p = document.createElement("p");
+      // p.setAttribute("id", "p_"+i);
+      // p.innerHTML = "hi";
+      // document.getElementById("results").appendChild(p);
+      // console.log(p);
+    }
+  }
+</script>
+
+</body>
+</html>

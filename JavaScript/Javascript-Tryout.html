@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Experiments with Javascript</title>
+</head>
+
+<body onload="displayCurrentDate()">
+
+	<!-- Change the text to current date -->
+	<button type="button"
+	onclick="document.getElementById('date-time').innerHTML = Date()">
+	Click me to display Date and Time.</button>
+	<p id="date-time"></p>
+
+
+	<!-- Toggle text of the button -->
+	<button type="button" onclick="this.innerHTML = changeText(this)">Click me</button>
+
+	<!-- Change the font size -->
+	<br><br><br>
+	<label style="font-size: 15px;">Change my font size</label><br>
+	<button style="height: 50px; width: 50px; font-size: 25px;">+</button>
+	<button style="height: 50px; width: 50px; font-size: 25px;">-</button>
+
+
+	<script type="text/javascript">
+		function changeText (button) {
+			currentVal = button.innerHTML
+			console.log (button.innerHTML)
+			if (currentVal == 'Click me') {
+				console.log ("ddd")
+				return "Don't click me"
+			} else {
+				return "Click me"
+			}
+		}
+
+
+		function displayCurrentDate() {
+			document.getElementById('date-time').innerHTML = Date()
+		}
+
+		function getNextFontSize(currentFontSize, increase) {
+			if (increase) {
+				return (currentFontSize+2)
+			} else {
+				return (currentFontSize-2)
+			}
+		}
+	</script>
+
+</body>
+</html>
